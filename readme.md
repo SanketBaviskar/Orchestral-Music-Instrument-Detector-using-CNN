@@ -1,4 +1,5 @@
-# Musical Instrument (Orchestral) Detection and Classification using Deep Learning### Overview
+# Musical Instrument (Orchestral) Detection and Classification using Deep Learning
+## Overview
 ##### This project aims to classify audio files into different categories using machine learning techniques. The classification is based on features extracted from the audio files, such as Mel-frequency cepstral coefficients (MFCCs), spectrograms, and other relevant audio features.
 ## Requirments
 ##### Basic understanding of CNN
@@ -11,7 +12,7 @@
 ##### Model Training: The models are trained on labeled audio data, optimizing for accuracy or other relevant metrics.
 ##### Evaluation: The trained models are evaluated using various metrics like accuracy, precision, recall, and F1-score.
 ##### Visualization: The project includes visualization tools to analyze the performance of the models, such as confusion matrices and learning curves.
-##### Dependencies
+## Dependencies
 ##### Python 3.x
 ##### Libraries: NumPy, librosa, scikit-learn, Matplotlib, TensorFlow/Keras
 ## Usage
