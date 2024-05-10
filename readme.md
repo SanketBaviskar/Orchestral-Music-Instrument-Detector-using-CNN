@@ -1,10 +1,10 @@
-# Musical Instrument (Orchestral) Using Deep learning
-### Overview
+# Musical Instrument (Orchestral) Detection and Classification using Deep Learning### Overview
 ##### This project aims to classify audio files into different categories using machine learning techniques. The classification is based on features extracted from the audio files, such as Mel-frequency cepstral coefficients (MFCCs), spectrograms, and other relevant audio features.
 ## Requirments
 ##### Basic understanding of CNN
-##### after installing the project run ` pip install -r requirements.txt ` to download ll the requirments file.
-##### this is the datasetlink I got all the dataset and i have selected few of the orchestral instrument from this dataset ` https://philharmonia.co.uk/resources/sound-samples/`
+##### after installing the project run `pip install -r requirements.txt` to download ll the requirments file.
+##### this is the datasetlink I got all the dataset and i have selected few of the orchestral instrument from this dataset 
+`https://philharmonia.co.uk/resources/sound-samples/`
 ## Features
 ##### Data Processing: The project preprocesses the audio files, extracting features like MFCCs and spectrograms.
 ##### Model Building: It builds machine learning models, such as convolutional neural networks (CNNs), recurrent neural networks (RNNs), or ensemble methods, for audio classification.
