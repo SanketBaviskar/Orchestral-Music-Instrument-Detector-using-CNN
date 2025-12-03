@@ -67,9 +67,7 @@ The codebase is organized using industry-standard engineering practices:
 
 ### Prerequisites
 
--   Python 3.8+
--   Node.js 16+
--   NPM
+-   Python 3.8
 
 ### Installation
 
