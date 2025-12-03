@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import StratifiedShuffleSplit
 from tensorflow.keras.utils import to_categorical
 
-def load_data(path='audio/', sr=44100, duration=None):
+def load_data(path='data/raw/', sr=44100, duration=None):
     """
     Loads audio files from the specified path and extracts labels.
     """

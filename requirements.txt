@@ -5,3 +5,6 @@ tensorflow
 matplotlib
 scikit-learn
 ipython
+fastapi
+uvicorn
+python-multipart

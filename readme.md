@@ -1,120 +1,131 @@
-# 🎻 Orchestral Music Instrument Detector
+# Orchestral Music Instrument Detector using CNN
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![TensorFlow](https://img.shields.io/badge/tensorflow-2.x-orange)
+![React](https://img.shields.io/badge/react-18-blue)
+![FastAPI](https://img.shields.io/badge/fastapi-0.95-green)
 
-A deep learning project that identifies orchestral instruments from audio recordings using Convolutional Neural Networks (CNNs). This system transforms raw audio into spectrograms and uses computer vision techniques to classify the sound into one of 8 instrument categories.
+> **Academic Project**: Developed for a Deep Learning course, achieving a **4.0 GPA**. This project demonstrates the application of Convolutional Neural Networks (CNNs) for audio classification.
 
-## 🚀 Features
+## 🎵 Overview
 
--   **Deep Learning Core**: Utilizes a custom CNN architecture optimized for spectrogram analysis.
--   **Spectrogram Processing**: Converts audio to visual representations (STFT) for robust feature extraction.
--   **Modular Design**: Clean, separated logic for data loading, modeling, training, and inference.
--   **Real-time Inference**: Fast prediction script for individual audio files.
--   **Visualization**: Built-in tools for plotting training history and confusion matrices.
+This project implements a deep learning system capable of classifying orchestral musical instruments from audio recordings. It utilizes a **Convolutional Neural Network (CNN)** trained on Mel-frequency cepstral coefficients (MFCCs) and Spectrograms extracted from audio samples.
 
-## 🏗️ System Architecture
+The system is deployed as a full-stack web application with a **FastAPI** backend for inference and a modern **React** frontend for user interaction.
 
-The system follows a pipeline approach: loading audio, processing it into spectrograms, and feeding it into the CNN for training or inference.
+### Key Features
+
+-   **Deep Learning Model**: Custom CNN architecture optimized for audio feature classification.
+-   **Audio Processing**: Real-time spectrogram generation using Librosa.
+-   **Interactive UI**: Drag-and-drop interface built with React and Framer Motion.
+-   **Production Ready**: Modular architecture with automated deployment configuration (Railway/Nixpacks).
+
+## 🏗️ Architecture
+
+The project follows a modular microservices-inspired architecture, separating the Machine Learning engine, Backend API, and Frontend UI.
 
 ```mermaid
 graph TD
-    A[🎵 Audio Files] -->|Librosa Load & Trim| B(Data Loader)
-    B -->|STFT & dB Conversion| C[📊 Spectrogram Generation]
-    C -->|Input Shape: 1025x87x1| D{🧠 CNN Model}
-    D -->|Training Phase| E[💾 Trained Weights]
-    D -->|Inference Phase| F[🎯 Prediction]
-    E --> F
+    User[User] -->|Uploads Audio| Frontend[React Frontend]
+    Frontend -->|POST /predict| Backend[FastAPI Backend]
+    Backend -->|Raw Audio| Preprocessing[Librosa Preprocessing]
+    Preprocessing -->|Spectrogram| Model[CNN Model]
+    Model -->|Prediction| Backend
+    Backend -->|JSON Result| Frontend
+    Frontend -->|Display| User
 ```
 
-## 🧠 Model Architecture
+### Directory Structure
 
-The model is a Sequential CNN designed to capture time-frequency patterns in the spectrograms.
-
-```mermaid
-graph LR
-    Input[Input Layer] --> Conv1[Conv2D + ReLU]
-    Conv1 --> BN1[Batch Norm]
-    BN1 --> Pool1[MaxPooling2D]
-    Pool1 --> Drop1[Dropout]
-    Drop1 --> Conv2[Conv2D + ReLU]
-    Conv2 --> BN2[Batch Norm]
-    BN2 --> Pool2[MaxPooling2D]
-    Pool2 --> Drop2[Dropout]
-    Drop2 --> Flat[Flatten]
-    Flat --> Dense1[Dense + ReLU]
-    Dense1 --> BN3[Batch Norm]
-    BN3 --> Drop3[Dropout]
-    Drop3 --> Output[Dense + Softmax]
-
-    style Input fill:#f9f,stroke:#333,stroke-width:2px
-    style Output fill:#9f9,stroke:#333,stroke-width:2px
-```
-
-## 📂 Project Structure
+The codebase is organized using industry-standard engineering practices:
 
 ```
-Orchestral-Music-Instrument-Detector/
-├── audio/                  # Dataset directory (instrument subfolders)
-├── logs/                   # TensorBoard logs
-├── models/                 # Saved model checkpoints
-├── src/                    # Source code
-│   ├── data_loader.py      # Audio processing & data generation
-│   ├── model.py            # CNN architecture definition
-│   ├── predict.py          # Inference script
-│   ├── train.py            # Training loop & callbacks
-│   └── utils.py            # Visualization helpers
-├── main.ipynb              # Original research notebook
-├── requirements.txt        # Project dependencies
-└── readme.md               # Project documentation
+.
+├── backend/                # FastAPI Application
+│   └── main.py             # API Entry point & Routes
+├── frontend/               # React Vite Application
+│   ├── src/                # React Components
+│   └── dist/               # Production Build
+├── ml/                     # Machine Learning Engine
+│   ├── model.py            # CNN Architecture Definition
+│   ├── data_loader.py      # Audio Processing & Data Pipeline
+│   ├── train.py            # Training Loop & Callbacks
+│   └── predict.py          # Inference Logic
+├── notebooks/              # Jupyter Notebooks
+│   └── experimentation.ipynb # Initial Research & Experiments
+├── data/                   # Dataset
+│   └── raw/                # Raw Audio Files (organized by class)
+├── models/                 # Saved Model Artifacts
+│   └── best_model.keras    # Best performing model
+├── tests/                  # Unit & Integration Tests
+├── nixpacks.toml           # Deployment Configuration
+└── requirements.txt        # Python Dependencies
 ```
 
-## 🛠️ Installation
+## 🚀 Getting Started
 
-1.  **Clone the repository**:
+### Prerequisites
+
+-   Python 3.8+
+-   Node.js 16+
+-   NPM
+
+### Installation
+
+1.  **Clone the repository**
 
     ```bash
     git clone https://github.com/SanketBaviskar/Orchestral-Music-Instrument-Detector-using-CNN.git
     cd Orchestral-Music-Instrument-Detector-using-CNN
     ```
 
-2.  **Install dependencies**:
+2.  **Install Python Dependencies**
+
     ```bash
     pip install -r requirements.txt
     ```
 
-## 🚦 Usage
+3.  **Install Frontend Dependencies**
+    ```bash
+    cd frontend
+    npm install
+    ```
 
-### Training the Model
+### Running Locally
 
-To train the model from scratch, use the `train.py` script. You can specify the number of epochs and batch size.
+1.  **Build the Frontend**
 
-```bash
-python src/train.py --epochs 50 --batch_size 32
-```
+    ```bash
+    cd frontend
+    npm run build
+    cd ..
+    ```
 
--   **Output**: The best model will be saved to `models/best_model.keras`.
--   **Logs**: Training progress can be viewed using TensorBoard: `tensorboard --logdir logs`.
+2.  **Start the Backend Server**
 
-### Running Predictions
+    ```bash
+    uvicorn backend.main:app --reload
+    ```
 
-To identify the instrument in an audio file, use the `predict.py` script.
+3.  **Access the App**
+    Open `http://127.0.0.1:8000` in your browser.
 
-```bash
-python src/predict.py --file path/to/your/audio_file.mp3
-```
+## 🧠 Model Details
 
-**Example Output:**
+The model is a Sequential CNN designed to process 2D Spectrograms:
 
-```
-Prediction: cello
-Confidence: 0.98
-```
+1.  **Input**: 1025x87x1 Spectrograms (1-second audio clips).
+2.  **Layers**:
+    -   2x Convolutional Blocks (Conv2D + BatchNorm + MaxPool + Dropout).
+    -   Flatten Layer.
+    -   Dense Layer (64 units, ReLU).
+    -   Output Layer (8 units, Softmax).
+3.  **Optimization**: Adam Optimizer, Categorical Crossentropy Loss.
 
-## 📊 Supported Instruments
+## 📊 Dataset
 
-The model is trained to recognize the following instruments:
+The dataset consists of audio samples for the following instruments:
 
 -   Cello
 -   Contrabassoon

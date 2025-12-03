@@ -1,0 +1,223 @@
+:root {
+	--primary: #6c63ff;
+	--primary-dark: #5a52d5;
+	--background: #0f172a;
+	--surface: #1e293b;
+	--text: #f8fafc;
+	--text-secondary: #94a3b8;
+	--accent: #38bdf8;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Outfit", sans-serif;
+	background-color: var(--background);
+	color: var(--text);
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	width: 100%;
+	max-width: 600px;
+	padding: 2rem;
+}
+
+header {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+header h1 {
+	font-size: 2.5rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	background: linear-gradient(135deg, var(--primary), var(--accent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+header p {
+	color: var(--text-secondary);
+}
+
+.upload-area {
+	background-color: var(--surface);
+	border: 2px dashed var(--text-secondary);
+	border-radius: 1rem;
+	padding: 3rem;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+	border-color: var(--primary);
+	background-color: rgba(108, 99, 255, 0.1);
+}
+
+.upload-area .icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.upload-area p {
+	font-size: 1.1rem;
+	margin-bottom: 0.5rem;
+}
+
+.upload-area .small {
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+}
+
+.preview-area {
+	background-color: var(--surface);
+	padding: 1.5rem;
+	border-radius: 1rem;
+	text-align: center;
+	margin-top: 2rem;
+	animation: fadeIn 0.5s ease;
+}
+
+#fileName {
+	margin-bottom: 1rem;
+	color: var(--accent);
+}
+
+audio {
+	width: 100%;
+	margin-bottom: 1.5rem;
+}
+
+.btn {
+	background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+	color: white;
+	border: none;
+	padding: 0.8rem 2rem;
+	border-radius: 2rem;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+}
+
+.btn.secondary {
+	background: transparent;
+	border: 1px solid var(--text-secondary);
+	margin-left: 1rem;
+}
+
+.loading {
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.spinner {
+	width: 40px;
+	height: 40px;
+	border: 4px solid rgba(255, 255, 255, 0.1);
+	border-left-color: var(--primary);
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin: 0 auto 1rem;
+}
+
+.result-area {
+	margin-top: 2rem;
+	animation: slideUp 0.5s ease;
+}
+
+.result-area h2 {
+	text-align: center;
+	margin-bottom: 1rem;
+	font-size: 1.2rem;
+	color: var(--text-secondary);
+}
+
+.prediction-card {
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.05),
+		rgba(255, 255, 255, 0.02)
+	);
+	padding: 2rem;
+	border-radius: 1rem;
+	text-align: center;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.instrument-name {
+	font-size: 2.5rem;
+	font-weight: 600;
+	color: var(--accent);
+	margin-bottom: 1rem;
+	text-transform: capitalize;
+}
+
+.confidence-bar-container {
+	width: 100%;
+	height: 8px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	overflow: hidden;
+	margin-bottom: 0.5rem;
+}
+
+.confidence-bar {
+	height: 100%;
+	background: linear-gradient(90deg, var(--primary), var(--accent));
+	width: 0%;
+	transition: width 1s ease-out;
+}
+
+.confidence-text {
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+}
+
+footer {
+	text-align: center;
+	margin-top: 3rem;
+	color: var(--text-secondary);
+	font-size: 0.8rem;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

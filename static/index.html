@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Orchestral Instrument Detector</title>
+		<link rel="stylesheet" href="style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Orchestral Instrument Detector</h1>
+				<p>Upload an audio file to identify the instrument</p>
+			</header>
+
+			<main>
+				<div class="upload-area" id="uploadArea">
+					<div class="icon">🎵</div>
+					<p>Drag & Drop audio file here</p>
+					<p class="small">or click to browse</p>
+					<input
+						type="file"
+						id="fileInput"
+						accept=".mp3, .wav"
+						hidden
+					/>
+				</div>
+
+				<div
+					class="preview-area"
+					id="previewArea"
+					style="display: none"
+				>
+					<p id="fileName">filename.mp3</p>
+					<audio id="audioPlayer" controls></audio>
+					<button id="predictBtn" class="btn">
+						Identify Instrument
+					</button>
+					<button id="resetBtn" class="btn secondary">Reset</button>
+				</div>
+
+				<div class="loading" id="loading" style="display: none">
+					<div class="spinner"></div>
+					<p>Analyzing audio spectrogram...</p>
+				</div>
+
+				<div class="result-area" id="resultArea" style="display: none">
+					<h2>Result</h2>
+					<div class="prediction-card">
+						<div class="instrument-name" id="instrumentName">
+							Cello
+						</div>
+						<div class="confidence-bar-container">
+							<div
+								class="confidence-bar"
+								id="confidenceBar"
+							></div>
+						</div>
+						<p class="confidence-text">
+							Confidence: <span id="confidenceValue">98%</span>
+						</p>
+					</div>
+				</div>
+			</main>
+
+			<footer>
+				<p>Powered by CNN & TensorFlow</p>
+			</footer>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

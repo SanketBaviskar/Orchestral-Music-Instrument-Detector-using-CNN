@@ -3,9 +3,9 @@ import numpy as np
 import argparse
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, TensorBoard
-from data_loader import load_data, DataGenerator
-from model import build_model
-from utils import plot_history
+from .data_loader import load_data, DataGenerator
+from .model import build_model
+from .utils import plot_history
 
 def train(audio_path, epochs=100, batch_size=32):
     # Load file paths and labels
@@ -56,7 +56,7 @@ def train(audio_path, epochs=100, batch_size=32):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train the Orchestral Instrument Detector')
-    parser.add_argument('--path', type=str, default='audio/', help='Path to audio files')
+    parser.add_argument('--path', type=str, default='data/raw/', help='Path to audio files')
     parser.add_argument('--epochs', type=int, default=100, help='Number of epochs')
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size')
     
